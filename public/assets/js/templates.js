@@ -19,7 +19,7 @@ const templates = [
     name: "Restaurante Moderno",
     slug: "restaurante",
     category: "Gastronomia",
-    image: "https://images.unsplash.com/photo-1550966842-2849a28c0a61?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop",
     badge: "🍽️ Ideal para restaurantes"
   },
   {
