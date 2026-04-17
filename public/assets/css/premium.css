@@ -307,48 +307,341 @@ h2.section-title em {
   background: linear-gradient(135deg, rgba(11,95,255,0.2), rgba(217,70,239,0.18));
   border: 1px solid var(--c-border-strong);
   padding: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
   overflow: hidden;
+  isolation: isolate;
 }
 .hero-home-visual::before {
   content: '';
   position: absolute;
   inset: -2px;
   background: conic-gradient(from 180deg at 50% 50%, transparent, rgba(11,95,255,0.3), transparent, rgba(217,70,239,0.3), transparent);
-  animation: spin 8s linear infinite;
+  animation: spin 12s linear infinite;
   z-index: -1;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-.flow-card {
-  background: rgba(10, 26, 47, 0.85);
-  backdrop-filter: blur(8px);
+
+/* ===== Funnel Slider ===== */
+.funnel-stage {
+  position: absolute;
+  inset: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .6s ease, transform .6s ease;
+  pointer-events: none;
+}
+.funnel-stage.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.stage-chip {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--c-border);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #e6edf8;
+  backdrop-filter: blur(6px);
+}
+.chip-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+}
+.google-dot { background: #4285F4; color: #4285F4; }
+.insta-dot  { background: #D946EF; color: #D946EF; }
+.page-dot   { background: #0B5FFF; color: #0B5FFF; }
+.wpp-dot    { background: #25d366; color: #25d366; }
+.money-dot  { background: #FFC400; color: #FFC400; }
+
+.stage-scene {
+  flex: 1;
+  background: rgba(10, 26, 47, 0.7);
   border: 1px solid var(--c-border);
   border-radius: var(--radius-md);
-  padding: 18px 20px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+.stage-line-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  min-height: 1.4em;
+  letter-spacing: 0.005em;
+}
+.stage-line-text::after {
+  content: '|';
+  margin-left: 2px;
+  opacity: .8;
+  animation: caretBlink 1s steps(2) infinite;
+}
+@keyframes caretBlink { 50% { opacity: 0; } }
+
+/* Slide 1 — Google */
+.search-bar {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
+  background: #fff;
+  color: #1a1a1a;
+  padding: 12px 16px;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px -8px rgba(66,133,244,0.45), 0 0 0 1px rgba(66,133,244,0.25);
+  font-size: 0.92rem;
+  font-weight: 500;
+  min-height: 44px;
 }
-.flow-card .step-num {
-  width: 38px; height: 38px;
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700;
-  background: var(--grad-primary);
-  font-size: 0.95rem;
+.search-icon { color: #4285F4; flex-shrink: 0; }
+.search-text { white-space: nowrap; overflow: hidden; }
+.caret {
+  color: #4285F4;
+  font-weight: 400;
+  animation: caretBlink 1s steps(2) infinite;
+}
+.search-suggestion {
+  align-self: flex-start;
+  background: rgba(66,133,244,0.12);
+  border: 1px solid rgba(66,133,244,0.3);
+  color: #cfe0ff;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+}
+
+/* Phones */
+.phone-mock {
+  align-self: center;
+  width: 160px;
+  background: #0a0a0a;
+  border: 2px solid #2a2a2a;
+  border-radius: 22px;
+  padding: 14px 12px;
+  box-shadow: 0 20px 50px -20px rgba(217,70,239,0.5);
+}
+.insta-phone {
+  background: linear-gradient(160deg,#1a0a2a,#0a0a0a);
+  border-color: rgba(217,70,239,0.35);
+}
+.phone-top {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 12px;
+}
+.phone-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--grad-insta);
   flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(217,70,239,0.6);
 }
-.flow-card.insta .step-num { background: var(--grad-insta); }
-.flow-card.wpp .step-num { background: var(--c-whatsapp); color: #062b13; }
-.flow-card.money .step-num { background: linear-gradient(135deg,#FFC400,#ff9100); color: #1a0e00; }
-.flow-card .step-label { font-weight: 600; font-size: 0.95rem; }
-.flow-card .step-desc { color: var(--c-muted); font-size: 0.82rem; }
+.phone-handle { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+.hl-1 { height: 7px; width: 70%; background: rgba(255,255,255,0.85); border-radius: 4px; }
+.hl-2 { height: 5px; width: 45%; background: rgba(255,255,255,0.35); border-radius: 4px; }
+.phone-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 4px;
+}
+.phone-grid div {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, rgba(123,44,255,0.4), rgba(217,70,239,0.4));
+  border-radius: 4px;
+}
+.phone-grid div:nth-child(2) { background: linear-gradient(135deg, rgba(217,70,239,0.6), rgba(255,196,0,0.4)); }
+.phone-grid div:nth-child(5) { background: linear-gradient(135deg, rgba(11,95,255,0.5), rgba(217,70,239,0.5)); }
+
+/* Slide 3 — Monitor */
+.monitor {
+  align-self: center;
+  width: 100%;
+  max-width: 260px;
+  background: #0a0a0a;
+  border: 1px solid #2a3852;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px -20px rgba(11,95,255,0.5);
+}
+.monitor-bar {
+  display: flex; gap: 5px;
+  padding: 8px 10px;
+  background: #111c2e;
+  border-bottom: 1px solid #1f2c44;
+}
+.monitor-bar span {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #2a3852;
+}
+.monitor-bar span:nth-child(1) { background: #ff5f56; }
+.monitor-bar span:nth-child(2) { background: #ffbd2e; }
+.monitor-bar span:nth-child(3) { background: #27c93f; }
+.monitor-screen {
+  position: relative;
+  padding: 16px;
+  background: #fff;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ms-line { height: 8px; background: #e2e8f0; border-radius: 3px; }
+.ms-line.w-70 { width: 70%; }
+.ms-line.w-50 { width: 50%; }
+.ms-line.w-40 { width: 40%; }
+.ms-btn {
+  margin-top: 8px;
+  align-self: flex-start;
+  background: #25d366;
+  color: #fff;
+  border: 0;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  box-shadow: 0 6px 16px -4px rgba(37,211,102,0.55);
+  position: relative;
+  animation: btnPulse 1.6s ease-in-out infinite;
+}
+@keyframes btnPulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+.cursor-click {
+  position: absolute;
+  bottom: 18px;
+  left: 92px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: rgba(11,95,255,0.95);
+  box-shadow: 0 0 0 0 rgba(11,95,255,0.6);
+  animation: clickPulse 1.6s ease-out infinite;
+}
+@keyframes clickPulse {
+  0% { box-shadow: 0 0 0 0 rgba(11,95,255,0.6); }
+  100% { box-shadow: 0 0 0 18px rgba(11,95,255,0); }
+}
+
+/* Slide 4 — WhatsApp */
+.wpp-phone {
+  background: linear-gradient(160deg,#0a1f15,#0a0a0a);
+  border-color: rgba(37,211,102,0.35);
+  display: flex; flex-direction: column; gap: 8px;
+  width: 200px;
+}
+.bubble {
+  max-width: 80%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  line-height: 1.3;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: bubbleIn .5s ease forwards;
+}
+.funnel-stage.is-active .bubble:nth-child(1) { animation-delay: .2s; }
+.funnel-stage.is-active .bubble:nth-child(2) { animation-delay: .9s; }
+.funnel-stage.is-active .bubble:nth-child(3) { animation-delay: 1.6s; }
+@keyframes bubbleIn { to { opacity: 1; transform: translateY(0); } }
+.bubble-in {
+  align-self: flex-start;
+  background: #1f2c44;
+  color: #fff;
+  border-bottom-left-radius: 4px;
+}
+.bubble-out {
+  align-self: flex-end;
+  background: #25d366;
+  color: #062b13;
+  border-bottom-right-radius: 4px;
+  font-weight: 600;
+}
+
+/* Slide 5 — Chart */
+.chart {
+  position: relative;
+  width: 100%;
+  height: 130px;
+  align-self: center;
+}
+.chart svg { width: 100%; height: 100%; display: block; filter: drop-shadow(0 0 12px rgba(37,211,102,0.45)); }
+.chart-line {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+}
+.funnel-stage.is-active .chart-line { animation: drawLine 1.6s ease forwards; }
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+.chart-money {
+  position: absolute;
+  top: 6px; left: 8px;
+  font-weight: 800;
+  color: #25d366;
+  font-size: 1.1rem;
+  text-shadow: 0 0 14px rgba(37,211,102,0.6);
+}
+.chart-arrow {
+  position: absolute;
+  top: -2px; right: 6px;
+  color: #25d366;
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-shadow: 0 0 14px rgba(37,211,102,0.7);
+}
+
+/* Progress dots */
+.funnel-progress {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+.funnel-progress span {
+  width: 22px; height: 4px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.18);
+  overflow: hidden;
+  position: relative;
+}
+.funnel-progress span.is-active::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, #0B5FFF, #D946EF);
+  transform-origin: left;
+  animation: progressBar var(--slide-dur, 3400ms) linear forwards;
+}
+.funnel-progress span.is-done {
+  background: linear-gradient(90deg, #0B5FFF, #D946EF);
+}
+@keyframes progressBar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.stage-line { display: none; }
 
 @media (max-width: 900px) {
   .hero-home { grid-template-columns: 1fr; gap: 40px; }
   .hero-home-visual { max-width: 480px; margin: 0 auto; }
+}
+@media (max-width: 480px) {
+  .hero-home-visual { padding: 20px; }
+  .funnel-stage { inset: 20px; }
+  .phone-mock { width: 140px; }
+  .monitor { max-width: 220px; }
 }
 
 /* ========== STEP CARDS (Como Funciona) ========== */

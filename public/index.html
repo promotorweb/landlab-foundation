@@ -72,41 +72,94 @@
             </div>
           </div>
 
-          <div class="hero-home-visual fade-up d2">
-            <div class="flow-card">
-              <div class="step-num">G</div>
-              <div>
-                <div class="step-label">Google encontra você</div>
-                <div class="step-desc">Cliente busca seu serviço na cidade</div>
+          <div class="hero-home-visual fade-up d2" data-funnel-slider>
+            <div class="funnel-stage" data-stage="0">
+              <div class="stage-chip"><span class="chip-dot google-dot"></span> Google</div>
+              <div class="stage-scene scene-google">
+                <div class="search-bar">
+                  <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                  <span class="search-text" data-typed></span><span class="caret">|</span>
+                </div>
+                <div class="search-suggestion">📍 Guarujá · Baixada Santista</div>
+              </div>
+              <div class="stage-line" data-line></div>
+            </div>
+
+            <div class="funnel-stage" data-stage="1">
+              <div class="stage-chip insta-chip"><span class="chip-dot insta-dot"></span> Instagram</div>
+              <div class="stage-scene scene-insta">
+                <div class="phone-mock insta-phone">
+                  <div class="phone-top">
+                    <div class="phone-avatar"></div>
+                    <div class="phone-handle">
+                      <div class="hl-1"></div>
+                      <div class="hl-2"></div>
+                    </div>
+                  </div>
+                  <div class="phone-grid">
+                    <div></div><div></div><div></div>
+                    <div></div><div></div><div></div>
+                  </div>
+                </div>
+                <div class="stage-line-text" data-typed></div>
+              </div>
+              <div class="stage-line" data-line></div>
+            </div>
+
+            <div class="funnel-stage" data-stage="2">
+              <div class="stage-chip page-chip"><span class="chip-dot page-dot"></span> Página de Vendas</div>
+              <div class="stage-scene scene-page">
+                <div class="monitor">
+                  <div class="monitor-bar"><span></span><span></span><span></span></div>
+                  <div class="monitor-screen">
+                    <div class="ms-line w-70"></div>
+                    <div class="ms-line w-50"></div>
+                    <div class="ms-line w-40"></div>
+                    <button class="ms-btn">Serviços</button>
+                    <div class="cursor-click"></div>
+                  </div>
+                </div>
+                <div class="stage-line-text" data-typed></div>
+              </div>
+              <div class="stage-line" data-line></div>
+            </div>
+
+            <div class="funnel-stage" data-stage="3">
+              <div class="stage-chip wpp-chip"><span class="chip-dot wpp-dot"></span> WhatsApp</div>
+              <div class="stage-scene scene-wpp">
+                <div class="phone-mock wpp-phone">
+                  <div class="bubble bubble-in">Olá! Vi seu site 👋</div>
+                  <div class="bubble bubble-out">Boa tarde! Como posso ajudar?</div>
+                  <div class="bubble bubble-in">Quero agendar 🙌</div>
+                </div>
+                <div class="stage-line-text" data-typed></div>
+              </div>
+              <div class="stage-line" data-line></div>
+            </div>
+
+            <div class="funnel-stage" data-stage="4">
+              <div class="stage-chip money-chip"><span class="chip-dot money-dot"></span> Resultado</div>
+              <div class="stage-scene scene-money">
+                <div class="chart">
+                  <svg viewBox="0 0 200 100" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="gFill" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stop-color="#25d366" stop-opacity="0.45"/>
+                        <stop offset="100%" stop-color="#25d366" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <path class="chart-area" d="M0,85 L40,70 L80,75 L120,45 L160,30 L200,10 L200,100 L0,100 Z" fill="url(#gFill)"/>
+                    <path class="chart-line" d="M0,85 L40,70 L80,75 L120,45 L160,30 L200,10" fill="none" stroke="#25d366" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <div class="chart-money">R$</div>
+                  <div class="chart-arrow">↗</div>
+                </div>
+                <div class="stage-line-text" data-typed></div>
               </div>
             </div>
-            <div class="flow-card insta">
-              <div class="step-num">IG</div>
-              <div>
-                <div class="step-label">Instagram convence</div>
-                <div class="step-desc">Sua presença gera desejo e confiança</div>
-              </div>
-            </div>
-            <div class="flow-card">
-              <div class="step-num">→</div>
-              <div>
-                <div class="step-label">Página de vendas converte</div>
-                <div class="step-desc">Estrutura premium, mensagem clara</div>
-              </div>
-            </div>
-            <div class="flow-card wpp">
-              <div class="step-num">W</div>
-              <div>
-                <div class="step-label">WhatsApp fecha</div>
-                <div class="step-desc">Lead qualificado direto no atendimento</div>
-              </div>
-            </div>
-            <div class="flow-card money">
-              <div class="step-num">R$</div>
-              <div>
-                <div class="step-label">Você fatura</div>
-                <div class="step-desc">Resultado real e contínuo</div>
-              </div>
+
+            <div class="funnel-progress" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
             </div>
           </div>
         </div>
