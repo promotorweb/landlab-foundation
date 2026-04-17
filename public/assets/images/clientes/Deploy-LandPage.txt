@@ -1,0 +1,301 @@
+PROMPT BASE — LINHA DE PRODUÇÃO LANDLAB
+
+Estou desenvolvendo o LandLab, uma biblioteca de landing pages modernas para negócios locais.
+
+Objetivo do sistema
+
+Criar landing pages visualmente profissionais, com aparência premium, alta conversão e prontas para publicação rápida.
+
+Nichos principais:
+
+barbearia
+clínica estética
+dentista
+advogado
+restaurante
+imobiliária
+terapeuta
+tarot / esotérico
+Estrutura real do meu fluxo de produção
+
+As páginas são criadas inicialmente em um projeto separado gerado por IA, normalmente com:
+
+React
+Vite
+TypeScript
+Tailwind
+
+Depois disso, o template é transformado em versão estática para entrar na biblioteca principal FS-LandPages.
+
+REGRA DE OURO DA LINHA DE PRODUÇÃO
+
+Você deve sempre respeitar este fluxo:
+
+ETAPA 1 — GERAÇÃO DO TEMPLATE
+
+Quando eu pedir uma landing page nova:
+
+gerar a estrutura visual da landing page
+manter foco em conversão
+priorizar visual premium
+usar copy clara
+CTA principal para WhatsApp
+mudar nomes, pessoas, endereço, telefone e dados sensíveis quando a referência vier de Instagram ou negócio real
+ETAPA 2 — FASE DE CORREÇÃO
+
+Quando eu enviar:
+
+print de erro
+comportamento inesperado
+tela branca
+problema de deploy
+problema visual
+problema de asset
+problema de rota
+
+Você NÃO deve sair corrigindo no escuro.
+
+Fluxo obrigatório:
+analisar o erro
+pedir os arquivos necessários
+eu envio os arquivos completos
+você analisa
+identifica a causa real
+corrige
+devolve o arquivo completo
+pronto para copiar e colar
+Nunca:
+devolver só trecho solto
+assumir arquivos que eu não enviei
+inventar estrutura sem ver os arquivos
+misturar solução React com solução HTML estática sem explicar o motivo
+ARQUITETURA OFICIAL DO LANDLAB
+
+O repositório principal FS-LandPages é uma biblioteca de templates estáticos.
+
+Estrutura padrão:
+
+FS-LandPages
+├── assets
+│   ├── css
+│   ├── js
+│   └── images
+├── templates
+│   ├── advogado
+│   ├── barbearia
+│   ├── clinica
+│   ├── dentista
+│   ├── estetica
+│   ├── imobiliaria
+│   ├── restaurante
+│   ├── tarot
+│   └── terapeuta
+├── index.html
+└── servicos.html
+FLUXO CORRETO DE PRODUÇÃO DOS TEMPLATES
+Projeto de origem (gerado por IA)
+
+Cada landing page pode nascer em um projeto separado com React + Vite.
+
+Regra obrigatória no vite.config.ts
+
+O build precisa usar caminho relativo:
+
+base: "./"
+
+Sem isso, os assets quebram quando forem movidos para dentro de /templates/nome-do-template/.
+
+Exemplo correto:
+import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import { defineConfig, loadEnv } from 'vite';
+
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, '.', '');
+
+  return {
+    base: "./",
+    plugins: [react(), tailwindcss()],
+    define: {
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '.'),
+      },
+    },
+    server: {
+      hmr: process.env.DISABLE_HMR !== 'true',
+    },
+  };
+});
+Build do template
+
+No projeto original:
+
+npm run build
+
+Isso gera:
+
+dist/
+├── index.html
+└── assets/
+    ├── index-xxxxx.js
+    └── index-xxxxx.css
+ETAPA DE EXPORTAÇÃO PARA O LANDLAB
+
+Depois do build, copiar o conteúdo de dist/ para:
+
+FS-LandPages/templates/nome-do-template/
+
+Exemplo:
+
+FS-LandPages/templates/dentista/
+├── index.html
+└── assets/
+    ├── index-xxxxx.js
+    └── index-xxxxx.css
+REGRAS IMPORTANTES PARA NÃO QUEBRAR TUDO
+1. Nunca usar caminho absoluto para assets no build
+
+Errado:
+
+/assets/index-xxxxx.js
+
+Certo:
+
+./assets/index-xxxxx.js
+
+Isso é resolvido com:
+
+base: "./"
+2. Nunca copiar só o index.html
+
+Sempre copiar:
+
+index.html
+pasta assets
+
+Se faltar a pasta assets, o template quebra.
+
+3. Nunca mexer manualmente no HTML buildado sem necessidade
+
+O index.html gerado pelo build normalmente já vem correto.
+
+Só corrigir manualmente se houver erro real confirmado.
+
+4. O repositório FS-LandPages não usa npm
+
+Ele é um repositório estático.
+
+Então:
+
+não rodar npm install nele
+não esperar package.json
+não tratar ele como projeto Vite
+não misturar com o projeto de origem gerado pela IA
+5. Deploy da Vercel para FS-LandPages
+
+Como o FS-LandPages é estático, a Vercel deve ser configurada assim:
+
+Framework Preset: Other
+Build Command: vazio
+Install Command: vazio
+Output Directory: .
+
+Isso evita erro de npm install em projeto sem package.json.
+
+FLUXO DE DEPLOY OFICIAL
+
+Depois de copiar o template novo para FS-LandPages:
+
+git add .
+git commit -m "update template nome-do-template"
+git push
+
+Se o Git disser:
+
+nothing to commit, working tree clean
+
+significa que:
+
+ou nada mudou
+ou o arquivo foi alterado e depois voltou ao estado anterior
+
+Se eu só quiser forçar deploy:
+
+git commit --allow-empty -m "redeploy"
+git push
+PADRÃO DE DIAGNÓSTICO DE ERROS
+
+Quando houver erro, você deve primeiro identificar qual destes casos é:
+
+Caso A — erro no projeto original React/Vite
+
+Exemplos:
+
+erro de build
+erro de TypeScript
+erro no vite.config.ts
+tela branca no projeto original
+problemas com React
+
+Nesse caso, pedir arquivos do projeto original, por exemplo:
+
+vite.config.ts
+package.json
+src/main.tsx
+src/App.tsx
+src/index.css
+Caso B — erro no LandLab estático
+
+Exemplos:
+
+template publicado não abre
+CSS sumiu
+tela branca depois do deploy
+asset 404
+JS buildado não carrega
+
+Nesse caso, pedir arquivos do template exportado, por exemplo:
+
+templates/dentista/index.html
+estrutura da pasta templates/dentista/
+nomes reais dos arquivos dentro de assets/
+REGRAS DE RESPOSTA
+
+Sempre que eu trouxer erro ou ajuste:
+
+seja prática
+identifique a causa
+não complique
+não misture arquitetura sem necessidade
+devolva arquivos completos quando eu enviar arquivos completos
+se faltar arquivo, peça antes
+mantenha compatibilidade com deploy Vercel
+preserve visual premium e layout intacto sempre que possível
+OBJETIVO FINAL DO LANDLAB
+
+Transformar o repositório em uma biblioteca estável de templates de landing pages, com fluxo de produção previsível:
+
+gerar template no projeto de origem
+ajustar base: "./"
+buildar com Vite
+copiar dist/ para FS-LandPages/templates/nome-do-template/
+commitar
+subir para GitHub
+publicar na Vercel sem build
+COMANDO DE CONTINUIDADE
+
+A partir daqui, sempre que eu enviar print, erro ou arquivo, siga exatamente esta linha de produção.
+
+Não fuja desse fluxo. Não invente atalhos. Não misture os dois projetos.
+
+Primeiro identifique se o problema está:
+
+no projeto de origem React/Vite
+ou
+no template estático exportado do LandLab
+
+Depois peça os arquivos certos e devolva a correção completa.

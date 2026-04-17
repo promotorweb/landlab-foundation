@@ -1,0 +1,307 @@
+/* 
+    LandingLab — Biblioteca de Landing Pages
+    Main Styles
+    Author: Filippi Santos
+*/
+
+:root {
+    --primary-color: #000000;
+    --primary-hover: #333333;
+    --accent-color: #007bff;
+    --text-color: #1a1a1a;
+    --text-light: #666666;
+    --bg-color: #ffffff;
+    --white: #ffffff;
+    --border-color: #f0f0f0;
+    --shadow: none;
+    --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.05);
+    --container-width: 1400px;
+    --font-sans: 'Inter', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Header */
+.header {
+    background-color: var(--white);
+    padding: 30px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-color);
+    letter-spacing: -1px;
+    transition: 0.3s;
+}
+
+.logo:hover .logo-text {
+    opacity: 0.7;
+}
+
+.logo-text span {
+    color: var(--accent-color);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-link {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-color);
+}
+
+.nav-link:hover {
+    opacity: 0.6;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 0;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+/* Hero */
+.hero {
+    padding: 160px 0 100px;
+    text-align: left;
+    background-color: var(--bg-color);
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: 84px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    color: var(--text-color);
+    letter-spacing: -2px;
+}
+
+.hero-subtitle {
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--text-light);
+    max-width: 800px;
+    line-height: 1.4;
+}
+
+/* Templates Section */
+.templates-section {
+    padding: 100px 0;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+    margin-bottom: 60px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+}
+
+.filter-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -21px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: 0.3s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    color: var(--primary-color);
+}
+
+.filter-btn.active::after {
+    width: 100%;
+}
+
+/* Footer */
+.footer {
+    background-color: #000000;
+    color: var(--white);
+    padding: 120px 0 60px;
+    margin-top: 160px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 100px;
+    margin-bottom: 80px;
+}
+
+.footer-info h3 {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.footer-info p {
+    color: #888;
+    font-size: 18px;
+    margin-bottom: 15px;
+    max-width: 400px;
+}
+
+.footer-info .author {
+    margin-top: 40px;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.footer-info .specialist {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #555;
+}
+
+.footer-contact h4 {
+    margin-bottom: 30px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #555;
+}
+
+.footer-contact p {
+    color: #888;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.footer-contact a {
+    color: var(--white);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.footer-contact a:hover {
+    border-color: var(--white);
+}
+
+.footer-bottom {
+    text-align: left;
+    padding-top: 60px;
+    border-top: 1px solid #222;
+    color: #444;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 64px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .hero {
+        padding: 100px 0 60px;
+    }
+
+    .hero-title {
+        font-size: 48px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+}
