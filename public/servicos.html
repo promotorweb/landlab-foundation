@@ -3,54 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LandLab — Biblioteca de Landing Pages</title>
-    <meta name="description" content="Escolha um modelo e veja como sua página pode ficar.">
-    
+    <title>Galeria de Páginas de Vendas | Templates por Nicho — Filippi Santos</title>
+    <meta name="description" content="Biblioteca de páginas de vendas profissionais por nicho. Escolha um modelo e veja como a sua pode ficar.">
+    <link rel="canonical" href="https://filippisantos.com.br/servicos.html" />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
     <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/premium.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="dark-mode">
-    <header class="header">
+<body>
+    <header class="site-header">
         <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <a href="index.html">
-                        <span class="logo-name">Filippi Santos</span>
-                        <span class="logo-tag">Landing Pages</span>
-                    </a>
-                </div>
-                <div class="nav-links">
-                    <a href="index.html" class="nav-link">Início</a>
-                    <a href="servicos.html" class="nav-link active">Nossos Serviços</a>
-                    <a href="index.html#sobre" class="nav-link">Sobre</a>
-                    <a href="index.html#faq" class="nav-link">Perguntas</a>
-                    <a href="index.html#contato" class="nav-link">Contato</a>
-                </div>
-                <div class="nav-cta">
-                    <a href="https://wa.me/5513981404884" class="btn btn-whatsapp">
-                        <i data-lucide="message-circle"></i> WhatsApp
-                    </a>
-                </div>
-                <button class="mobile-menu-toggle">
-                    <i data-lucide="menu"></i>
-                </button>
+            <a class="brand" href="index.html">
+                <span class="brand-name">Filippi Santos</span>
+                <span class="brand-tag">Páginas de Vendas</span>
+            </a>
+            <nav class="nav-main">
+                <a href="index.html">Home</a>
+                <a href="como-funciona.html">Como Funciona</a>
+                <a href="beneficios.html">Benefícios</a>
+                <a href="servicos.html" class="active">Galeria</a>
+                <a href="autoridade.html">Autoridade</a>
+                <a href="faq.html">FAQ</a>
             </nav>
+            <a href="https://wa.me/5513981404884" class="header-cta" target="_blank" rel="noopener"><span>WhatsApp</span></a>
+            <button class="menu-toggle" aria-label="Menu">☰</button>
         </div>
     </header>
 
-    <main>
+    <nav class="mobile-drawer">
+        <a href="index.html">Home</a>
+        <a href="como-funciona.html">Como Funciona</a>
+        <a href="beneficios.html">Benefícios</a>
+        <a href="servicos.html" class="active">Galeria</a>
+        <a href="autoridade.html">Autoridade</a>
+        <a href="faq.html">FAQ</a>
+        <a href="cta.html">Começar agora</a>
+    </nav>
+
+    <main style="padding-top: var(--header-h);">
         <section class="hero-services">
             <div class="container">
-                <h1 class="hero-title">LandLab — Biblioteca de Landing Pages</h1>
-                <p class="hero-subtitle">Escolha um modelo e veja como sua página pode ficar. Templates profissionais prontos para o seu negócio.</p>
+                <h1 class="hero-title">Galeria de Páginas de Vendas</h1>
+                <p class="hero-subtitle">Escolha um modelo e veja como sua página pode ficar. Templates profissionais prontos para o seu nicho.</p>
             </div>
         </section>
 
@@ -66,49 +69,39 @@
                 <div id="templates-grid" class="templates-grid">
                     <!-- Cards serão gerados via JavaScript -->
                 </div>
+
+                <div class="cta-row" style="justify-content:center; margin-top: 60px;">
+                    <a href="https://wa.me/5513981404884?text=Gostei%20de%20um%20template%20da%20galeria" class="btn btn-whatsapp btn-large" target="_blank" rel="noopener">
+                        Quero um modelo desses
+                    </a>
+                    <a href="cta.html" class="btn btn-yellow btn-large">Começar minha página</a>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3>Filippi Santos</h3>
-                    <p>Landing Pages</p>
-                </div>
-                <div class="footer-contact">
-                    <h4>WhatsApp</h4>
-                    <p><a href="https://wa.me/5513981404884">13 98140-4884</a></p>
-                </div>
-                <div class="footer-address">
-                    <h4>Endereço</h4>
-                    <p>Av. Ademar de Barros, 210<br>Guarujá – SP</p>
-                </div>
+                <div class="footer-brand-block"><span class="brand-name">Filippi Santos</span><p>Páginas de vendas premium para negócios locais em Guarujá, Santos, São Vicente, Praia Grande e Bertioga.</p></div>
+                <div><h4>Navegação</h4><p><a href="index.html">Home</a></p><p><a href="como-funciona.html">Como Funciona</a></p><p><a href="beneficios.html">Benefícios</a></p><p><a href="servicos.html">Galeria</a></p></div>
+                <div><h4>Mais</h4><p><a href="autoridade.html">Autoridade</a></p><p><a href="faq.html">FAQ</a></p><p><a href="cta.html">Começar</a></p></div>
+                <div><h4>Contato</h4><p><a href="https://wa.me/5513981404884" target="_blank" rel="noopener">13 98140-4884</a></p><p>Av. Ademar de Barros, 210<br>Guarujá – SP</p></div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Filippi Santos. Todos os direitos reservados.</p>
-            </div>
+            <div class="footer-bottom">© 2026 Filippi Santos · Todos os direitos reservados</div>
         </div>
     </footer>
 
-    <!-- Botão WhatsApp Flutuante -->
-    <!-- Botão WhatsApp Flutuante -->
-<a href="https://wa.me/5513981404884"
-class="whatsapp-float"
-target="_blank"
-rel="noopener noreferrer"
-aria-label="Falar no WhatsApp">
-
-<img src="assets/images/whatsapp-business.png" alt="WhatsApp Business">
-
-</a>
+    <a href="https://wa.me/5513981404884" class="wa-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+        <img src="assets/images/whatsapp-business.png" alt="WhatsApp Business">
+    </a>
 
     <!-- Scripts -->
     <script src="assets/js/templates.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/site.js"></script>
     <script>
-        lucide.createIcons();
+        if (window.lucide) lucide.createIcons();
     </script>
 </body>
 </html>
