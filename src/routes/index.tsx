@@ -1,13 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  beforeLoad: () => {
+    if (typeof window !== "undefined") {
+      window.location.replace("/index.html");
+    }
+    throw redirect({ href: "/index.html" });
+  },
+  component: () => null,
 });
-
-function Index() {
-  useEffect(() => {
-    window.location.replace("/index.html");
-  }, []);
-  return null;
-}
