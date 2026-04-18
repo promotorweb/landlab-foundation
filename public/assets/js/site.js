@@ -82,3 +82,18 @@
 
   start();
 })();
+
+// ===== Authority Carousel =====
+(function () {
+    const carousel = document.querySelector('.authority-carousel');
+    if (!carousel) return;
+
+    const images = carousel.querySelectorAll('.carousel-image');
+    let currentIndex = 0;
+
+    setInterval(() => {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+    }, 3000);
+})();

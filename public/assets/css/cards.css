@@ -6,14 +6,16 @@
 
 .templates-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    gap: 40px; /* Reduced gap for a tighter grid */
+    /* This creates a 3-column grid on desktops */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px; /* Elegant spacing */
 }
 
 .card {
     background: rgba(15, 23, 42, 0.6);
     border: 1px solid rgba(59, 130, 246, 0.2);
-    border-radius: 16px;
+    /* Increased border-radius for a more sophisticated look */
+    border-radius: 24px;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: flex;
@@ -31,7 +33,7 @@
 
 .card-image {
     width: 100%;
-    aspect-ratio: 16/10; /* Modern aspect ratio */
+    aspect-ratio: 16/10;
     overflow: hidden;
     position: relative;
     border-bottom: 1px solid rgba(59, 130, 246, 0.2);
@@ -41,7 +43,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center; /* Show top of the pages */
+    object-position: top center;
     transition: 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
@@ -50,34 +52,36 @@
 }
 
 .card-content {
-    padding: 25px 30px;
+    /* Proportional padding */
+    padding: 20px 25px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
 .card-category {
-    font-size: 12px;
+    font-size: 11px; /* Slightly smaller to fit the new card size */
     font-weight: 500;
     text-transform: uppercase;
-    color: #3B82F6; /* Blue accent for category */
-    margin-bottom: 12px;
+    color: #3B82F6;
+    margin-bottom: 10px;
     letter-spacing: 0.1em;
 }
 
 .card-title {
     font-family: var(--font-sans);
-    font-size: 22px;
+    /* Proportional title size */
+    font-size: 20px;
     font-weight: 600;
-    margin-bottom: 20px;
-    color: #F1F5F9; /* Lighter text color */
+    margin-bottom: 15px;
+    color: #F1F5F9;
     letter-spacing: -0.5px;
     line-height: 1.3;
 }
 
 .card-footer {
-    margin-top: auto; /* Pushes footer to the bottom */
-    padding-top: 20px;
+    margin-top: auto;
+    padding-top: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -87,12 +91,12 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 20px;
+    padding: 8px 18px; /* Slightly smaller button */
     background-color: rgba(59, 130, 246, 0.1);
     border: 1px solid rgba(59, 130, 246, 0.3);
     color: #E2E8F0;
     border-radius: 50px;
-    font-size: 14px;
+    font-size: 13px; /* Slightly smaller font */
     font-weight: 500;
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
@@ -106,8 +110,8 @@
 }
 
 .btn-view .icon {
-    width: 16px;
-    height: 16px;
+    width: 14px; /* Smaller icon */
+    height: 14px;
     transition: transform 0.3s ease;
 }
 
@@ -116,18 +120,20 @@
 }
 
 /* Responsividade */
+/* Tablet view: 2 columns */
 @media (max-width: 1024px) {
     .templates-grid {
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 30px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
     }
 
     .card-title {
-        font-size: 20px;
+        font-size: 18px;
     }
 }
 
-@media (max-width: 480px) {
+/* Mobile view: 1 column */
+@media (max-width: 768px) {
     .templates-grid {
         grid-template-columns: 1fr;
     }
